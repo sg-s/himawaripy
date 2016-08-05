@@ -25,11 +25,7 @@ def set_background(file_path):
     elif de == "lxde":
         subprocess.call(["pcmanfm", "--set-wallpaper", file_path, "--wallpaper-mode=fit", ])
     elif de == "mac":
-        subprocess.call(["osascript", "-e", 'tell application "System Events"\n'
-                         'set theDesktops to a reference to every desktop\n'
-                         'repeat with aDesktop in theDesktops\n'
-                         'set the picture of aDesktop to \"' + file_path + '"\nend repeat\nend tell'])
-        subprocess.call(["killall", "Dock"])
+        subprocess.call(["wallpaper", file_path])
     elif has_program("feh"):
         print("\nCouldn't detect your desktop environment ('{}'), but you have"
               "'feh' installed so we will use it.".format(de))
